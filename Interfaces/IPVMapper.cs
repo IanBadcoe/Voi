@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-using Geom_Util;
+using Geom_Util.Immutable;
 
 namespace Voi.Interfaces
 {

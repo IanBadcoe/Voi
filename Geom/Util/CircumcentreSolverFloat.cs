@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-using Geom_Util;
+using Geom_Util.Immutable;
 
 namespace Geom.Util
 {

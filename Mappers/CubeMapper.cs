@@ -2,7 +2,7 @@
 
 using Godot_Util;
 
-using Geom_Util;
+using Geom_Util.Immutable;
 
 using Voi.Interfaces;
 

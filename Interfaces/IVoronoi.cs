@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
 
-using Geom.Interfaces;
-using Geom;
+using Voi.Geom.Interfaces;
 
-using Geom_Util;
+using Geom_Util.Immutable;
 
-namespace Voi.Interfaces
+namespace Voi.Interfaces;
+
+public interface IVoronoi : IPolyhedronSet
 {
-    public interface IVoronoi : IPolyhedronSet
-    {
-        IEnumerable<Geom.Face> Faces { get; }
-        IEnumerable<ImVec3> Verts { get; }
-        IDelaunay Delaunay { get; }
-        float Tolerance { get; }
-    }
+    IEnumerable<Geom.Face> Faces { get; }
+    IEnumerable<ImVec3> Verts { get; }
+    IDelaunay Delaunay { get; }
+    float Tolerance { get; }
 }

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Geom.Interfaces
+namespace Voi.Geom.Interfaces;
+
+public interface IPolyhedronSet
 {
-    public interface IPolyhedronSet
-    {
-        IEnumerable<IPolyhedron> Polyhedrons { get; }
-    }
+    IEnumerable<IPolyhedron> Polyhedrons { get; }
 }

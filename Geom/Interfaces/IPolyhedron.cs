@@ -1,25 +1,24 @@
 ﻿using System.Collections.Generic;
 
-using Geom_Util;
+using Geom_Util.Immutable;
 
-namespace Geom.Interfaces
+namespace Voi.Geom.Interfaces;
+
+public interface IPolyhedron
 {
-    public interface IPolyhedron
+    enum MeshType
     {
-        enum MeshType
-        {
-            Unknown,
-            Smooth,
-            Faces,
+        Unknown,
+        Smooth,
+        Faces,
 
-            // may add more types later...
-        }
-
-        IEnumerable<Face> Faces { get; }
-        IEnumerable<ImVec3> Verts { get; }
-        ImVec3 Centre { get; }
-        MeshType Type { get; }
-
-        Face GetFaceByKey(object key);
+        // may add more types later...
     }
+
+    IEnumerable<Face> Faces { get; }
+    IEnumerable<ImVec3> Verts { get; }
+    ImVec3 Centre { get; }
+    MeshType Type { get; }
+
+    Face GetFaceByKey(object key);
 }
