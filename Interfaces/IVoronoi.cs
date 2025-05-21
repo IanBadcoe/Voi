@@ -9,7 +9,7 @@ namespace Voi.Interfaces
 {
     public interface IVoronoi : IPolyhedronSet
     {
-        IEnumerable<Face> Faces { get; }
+        IEnumerable<Geom.Face> Faces { get; }
         IEnumerable<ImVec3> Verts { get; }
         IDelaunay Delaunay { get; }
         float Tolerance { get; }

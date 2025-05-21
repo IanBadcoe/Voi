@@ -39,7 +39,7 @@ namespace Voi
 
         public IPolyhedron Polyhedron => PolyhedronRW;
 
-        public Face FaceWithNeighbour(IProgressivePoint neighbour)
+        public Geom.Face FaceWithNeighbour(IProgressivePoint neighbour)
         {
             return PolyhedronRW.GetFaceByKey(neighbour);
         }

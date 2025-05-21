@@ -61,13 +61,13 @@ namespace Voi
         // not structly the outer hull, if we are not convext
         public IPolyhedron OuterSurface()
         {
-            Dictionary<Face, int> face_dictionary = new Dictionary<Face, int>();
+            Dictionary<Geom.Face, int> face_dictionary = new Dictionary<Geom.Face, int>();
 
             foreach (var poly in Polyhedrons)
             {
                 foreach (var face in poly.Faces)
                 {
-                    Face face_rev = face.Reversed();
+                    Geom.Face face_rev = face.Reversed();
 
                     if (face_dictionary.ContainsKey(face_rev))
                     {

@@ -14,7 +14,7 @@ namespace Voi.Interfaces
         ImVec3Int Cell { get; }           // even if we have no point, this is filled in with the centre of the cell asked about
         IProgressiveVoronoi.Solidity Solidity { get; }
         IPolyhedron Polyhedron { get; }
-        Face FaceWithNeighbour(IProgressivePoint neighbour);
+        Geom.Face FaceWithNeighbour(IProgressivePoint neighbour);
         Mesh Mesh { get; }
         IPolyhedron.MeshType MeshType { get; }
         Material Material { get; }

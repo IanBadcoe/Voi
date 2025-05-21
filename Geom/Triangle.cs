@@ -34,9 +34,9 @@ namespace Voi
 
         public ImVec3 Centre => Verts.Aggregate((v1, v2) => v1 + v2) / 3;
 
-        public Face ToFace(ImVec3 normal)
+        public Geom.Face ToFace(ImVec3 normal)
         {
-            return new Face(Verts.ToList(), normal);
+            return new Geom.Face(Verts.ToList(), normal);
         }
     }
 }

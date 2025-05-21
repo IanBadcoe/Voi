@@ -222,7 +222,7 @@ namespace Voi
                 //PoorMansProfiler.Start("FaceWithNeighbour");
                 // our neighbour may already have the relevant face...
                 // (if it is non-solid)
-                Face face = neighbour.FaceWithNeighbour(pnt);
+                Geom.Face face = neighbour.FaceWithNeighbour(pnt);
                 //PoorMansProfiler.End("FaceWithNeighbour");
 
                 if (face == null)
@@ -251,7 +251,7 @@ namespace Voi
         }
 
         // can return null for a degenerate face
-        private Face TryCreateFace(ImVec3 our_point, ImVec3 other_point)
+        private Geom.Face TryCreateFace(ImVec3 our_point, ImVec3 other_point)
         {
             PoorMansProfiler.Start("FindTets");
             // find all the tets that use this edge
@@ -340,7 +340,7 @@ namespace Voi
 
             PoorMansProfiler.Start("Face ctor");
 
-            var ret = new Face(merged_verts, (other_point - our_point).Normalised());
+            var ret = new Geom.Face(merged_verts, (other_point - our_point).Normalised());
 
             PoorMansProfiler.End("Face ctor");
 
