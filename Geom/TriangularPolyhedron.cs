@@ -86,7 +86,7 @@ public class TriangularPolyhedron
 
             PoorMansProfiler.Start("TriangularPolyhedron.Tri Search");
             // some significant CPU in this search, could store indexed by hash?
-            // or indexed by one very then brute-force the others?
+            // or indexed by one vert then brute-force the others?
             bool find = Triangles.Contains(tri);
             PoorMansProfiler.End("TriangularPolyhedron.Tri Search");
 
