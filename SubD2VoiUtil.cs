@@ -5,6 +5,7 @@ using Geom_Util.Immutable;
 
 using System.Linq;
 using System.Collections.Generic;
+using Godot_Util;
 
 namespace Voi;
 
@@ -21,8 +22,10 @@ public static class SubD2VoiUtil
         return PolyhedronToSurf(g_poly);
     }
 
-    public static Surface PolyhedronToSurf(Geom.Polyhedron g_poly)
+    public static Surface PolyhedronToSurf(Geom.Interfaces.IPolyhedron g_poly)
     {
+        // Util.Assert(g_poly.Validate());
+
         SpatialDictionary<VIdx, Vert> surf_verts = [];
         SpatialDictionary<EIdx, Edge> surf_edges = [];
         SpatialDictionary<FIdx, Face> surf_faces = [];
@@ -54,9 +57,9 @@ public static class SubD2VoiUtil
                 verts.Add(added_verts[v]);
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < verts.Count; i++)
             {
-                int next_i = (i + 1) % 3;
+                int next_i = (i + 1) % verts.Count;
                 Vert vert = verts[i];
                 Vert next_vert = verts[next_i];
 
@@ -95,11 +98,13 @@ public static class SubD2VoiUtil
 
             foreach (Edge edge in forwards_edges)
             {
+                Util.Assert(edge.Forwards == null);
                 edge.Forwards = face;
             }
 
             foreach (Edge edge in backwards_edges)
             {
+                Util.Assert(edge.Backwards == null);
                 edge.Backwards = face;
             }
         }

@@ -105,11 +105,11 @@ public class Face : IEquatable<Face>
         // then the hexagon adcgbe has twice the area of the triangle abc (and moving o does not change that, although when o leaves
         // the triangle some of the areas go -ve...
         //
-        // HOWEVER to make the calculatio easier, we move o on top of our first point, this makes one of the
+        // HOWEVER to make the calculation easier, we move o on top of our first point, this makes one of the
         // vectors zero length, so two of the cross-products disappear
         //
         // ALSO, by making all the vectors relative, we avoid any precision problems with cross-products of very long vectors
-        // that produce very large results which we have to subract from each other and arrive at a relatively very small number...
+        // that produces very large results which we have to subract from each other and arrive at a relatively very small number...
 
         var prev = verts[1] - verts[0];
 
@@ -176,7 +176,7 @@ public class Face : IEquatable<Face>
 
         foreach (var vert in Verts)
         {
-            ret = ret * 13 + vert.GetHashCode();
+            ret = HashCode.Combine(ret, vert.GetHashCode());
         }
 
         return ret;

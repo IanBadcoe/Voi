@@ -4,5 +4,5 @@ namespace Voi.Geom.Interfaces;
 
 public interface IPolyhedronSet
 {
-    IEnumerable<IPolyhedron> Polyhedrons { get; }
+    IEnumerable<IPolyhedron> Polyhedra { get; }
 }

@@ -48,7 +48,7 @@ public class TriangularPolyhedron
 
         public override int GetHashCode()
         {
-            return I1.GetHashCode() + I2.GetHashCode() * 3 + I3.GetHashCode() * 7;
+            return HashCode.Combine(I1.GetHashCode(), I2.GetHashCode(), I3.GetHashCode());
         }
     }
 

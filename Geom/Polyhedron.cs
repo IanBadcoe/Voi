@@ -5,6 +5,9 @@ using System.Linq;
 using Voi.Geom.Interfaces;
 
 using Geom_Util.Immutable;
+using Godot;
+using System;
+using Geom_Util;
 
 namespace Voi.Geom;
 
@@ -25,12 +28,11 @@ public class Polyhedron : IPolyhedron
     List<Face> FacesRW = new List<Face>();
     Dictionary<object, Face> FacesMapRW = new Dictionary<object, Face>();
 
-    #region IVPolyhedron
+    #region IPolyhedron
     public IEnumerable<Face> Faces => FacesRW.Concat(FacesMapRW.Values);
     public IEnumerable<ImVec3> Verts => Faces.SelectMany(f => f.Verts).Distinct();
     public ImVec3 Centre { get; }
     public IPolyhedron.MeshType Type { get; set; }
-
     public Face GetFaceByKey(object key)
     {
         Face ret = null;
@@ -114,5 +116,39 @@ public class Polyhedron : IPolyhedron
         }, new ImVec3(-1, 0, 0)));
 
         return ret;
+    }
+
+    internal bool IsClosed()
+    {
+        Dictionary<(ImVec3, ImVec3), int> edges = [];
+
+        foreach (Face face in Faces)
+        {
+            ImVec3 prev_vert = face.Verts.Last();
+
+            foreach (ImVec3 vert in face.Verts)
+            {
+                if (edges.ContainsKey((vert, prev_vert)))
+                {
+                    edges[(vert, prev_vert)]++;
+                }
+                else
+                {
+                    edges[(prev_vert, vert)] = 0;
+                }
+
+                prev_vert = vert;
+            }
+        }
+
+        foreach (var pair in edges)
+        {
+            if (pair.Value != 1)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

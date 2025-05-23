@@ -62,7 +62,7 @@ public class Delaunay : IDelaunay
     {
         Dictionary<Geom.Face, int> face_dictionary = new Dictionary<Geom.Face, int>();
 
-        foreach (var poly in Polyhedrons)
+        foreach (var poly in Polyhedra)
         {
             foreach (var face in poly.Faces)
             {
@@ -97,7 +97,7 @@ public class Delaunay : IDelaunay
     #endregion
 
     #region IPolyhedronSet
-    public IEnumerable<IPolyhedron> Polyhedrons => Tets.Select(tet => tet.ToPolyhedron());
+    public IEnumerable<IPolyhedron> Polyhedra => Tets.Select(tet => tet.ToPolyhedron());
     #endregion
 
     public void AddTet(DTetrahedron tet)

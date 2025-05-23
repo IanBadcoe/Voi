@@ -48,7 +48,7 @@ class ProgressiveVoronoi : IProgressiveVoronoi
     }
 
     #region IPolyhedronSet
-    public IEnumerable<IPolyhedron> Polyhedrons => Points.Values.Select(pv => pv.Polyhedron).Where(p => p != null);
+    public IEnumerable<IPolyhedron> Polyhedra => Points.Values.Select(pv => pv.Polyhedron).Where(p => p != null);
     #endregion
 
     #region IProgressiveVoronoi
@@ -380,9 +380,7 @@ class ProgressiveVoronoi : IProgressiveVoronoi
         PoorMansProfiler.Start("AddPointInner");
         Util.Assert(solid != IProgressiveVoronoi.Solidity.Unknown, "Trying to set point with unknown solitity");
 
-        ProgressivePoint pp;
-
-        if (!Points.TryGetValue(cell, out pp))
+        if (!Points.TryGetValue(cell, out ProgressivePoint pp))
         {
             pp = new ProgressivePoint(pnt, cell, this, mesh_type, material);
 
@@ -395,7 +393,6 @@ class ProgressiveVoronoi : IProgressiveVoronoi
 
         pp.Exists = true;
         pp.Solidity = solid;
-        pp.Material = material;
         pp.MeshType = mesh_type;
         pp.Material = material;
 
